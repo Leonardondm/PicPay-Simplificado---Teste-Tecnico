@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rolepermissions',
     'users',
+    'payments',
+    'django_q',
 ]
+
+AUTH_USER_MODEL = 'users.User'
+ROLEPERMISSIONS_MODULE = 'core.roles'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,3 +128,16 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+AUTHORIZE_TRANSFER_ENDPOINT = "https://run.mocky.io/v3/9826c6f8f-6c14-445d-be0a-a08db4c8813b"
+
+
+Q_CLUSTER = {
+    'name': 'DjangoQ',
+    'workers': 4,
+    'timeout': 60,
+    'retry': 300,
+    'orm': 'default',
+}
